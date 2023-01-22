@@ -2,12 +2,16 @@
 // for information about these interfaces
 // and what to do when importing types
 declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface Platform {}
-	}
+  namespace App {
+    // interface Error {}
+    interface Locals {
+      user: import("firebase-admin/auth").DecodedIdToken | null;
+    }
+    interface PageData {
+      session: import("$lib/types").Session;
+    }
+    // interface Platform {}
+  }
 }
 
 export {};
