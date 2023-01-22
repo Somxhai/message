@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { session } from "$lib/session";
   import { sideMenu } from "$lib/stores/SideMenuStore";
   import AnchorWithArrow from "$lib/ui/button/AnchorWithArrow.svelte";
   import MenuButton from "$lib/ui/button/MenuButton.svelte";
   import ArrowLongRight from "$lib/ui/icons/ArrowLongRight.svelte";
   import CloseIcon from "$lib/ui/icons/CloseIcon.svelte";
   import Title from "$lib/ui/Title.svelte";
+  import { scrollToComponent } from "$lib/utils/scrollTo";
 
   let background: HTMLButtonElement;
   let sidebar: HTMLDivElement;
@@ -34,7 +36,7 @@
 >
   <div class="flex items-center border-b-2 py-2 px-2">
     <MenuButton on:click={onClose}>
-      <CloseIcon size={5} />
+      <CloseIcon class="w-5 h-5" />
     </MenuButton>
     <Title class="mx-4" on:click={onClose} />
   </div>
@@ -42,18 +44,45 @@
   <section class="text-xs whitespace-nowrap">
     <div class="border-b-2 py-4">
       <p class="text-sm font-medium  text-gray-500 px-4">อ่านข้อความ</p>
-      <AnchorWithArrow href="/messages" class="hover:bg-slate-100 p-2 px-4" text="ของคนอื่น" />
-      <AnchorWithArrow href="/message" class="hover:bg-slate-100 p-2 px-4" text="ของตัวเอง"/>
+      <AnchorWithArrow
+        on:click={onClose}
+        href="/message"
+        class="hover:bg-slate-100 p-2 px-4 "
+        text="ของคนอื่น"
+      />
+      <AnchorWithArrow
+        on:click={onClose}
+        href={$session.user ? "/message/" + $session.user?.uid : "/login"}
+        class="hover:bg-slate-100 p-2 px-4 "
+        text="ของตัวเอง"
+      />
     </div>
     <div class="border-b-2 py-4">
       <a
-        href="/account"
+        href="/#questions"
+        on:click={() => {
+          scrollToComponent("#questions");
+          onClose()
+        }}
+        class="flex justify-between hover:bg-slate-100 px-4 py-2"
+      >
+        <span class="text-sm font-medium text-gray-500 hover:text-black "
+          >คำถาม</span
+        >
+        <ArrowLongRight class="w-4 h-4" />
+      </a>
+    </div>
+
+    <div class="border-b-2 py-4">
+      <a
+      on:click={onClose}
+        href={!!$session.user ? "/account" : "/login"}
         class="flex justify-between hover:bg-slate-100 px-4 py-2"
       >
         <span class="text-sm font-medium text-gray-500 hover:text-black "
           >บัญชี</span
         >
-        <ArrowLongRight />
+        <ArrowLongRight class="w-4 h-4" />
       </a>
     </div>
   </section>
