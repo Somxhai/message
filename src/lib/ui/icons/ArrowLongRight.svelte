@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let size: number = 4;
+  
   export let className = "";
 
   export { className as class };
@@ -11,7 +11,7 @@
   viewBox="0 0 24 24"
   stroke-width="1.5"
   stroke="currentColor"
-  class={`w-${size} h-${size} ${className}`}
+  class="{className}"
 >
   <path
     stroke-linecap="round"
