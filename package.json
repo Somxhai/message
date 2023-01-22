@@ -31,6 +31,8 @@
 		"@jridgewell/sourcemap-codec": "^1.4.14",
 		"firebase": "^9.15.0",
 		"firebase-admin": "^11.4.1",
+		"graphql-request": "^5.1.0",
+		"svelte-loading-spinners": "^0.3.4",
 		"universal-cookie": "^4.0.4"
 	}
 }
