@@ -11,7 +11,7 @@
   });
   const onAutofill = () => {
     // checking for autofill
-    if (textBox.matches(":-webkit-autofill")) {
+    if (textBox.matches(":-webkit-autofill") || textBox.value.length > 0) {
       onFloating();
     }
   };
@@ -43,6 +43,7 @@
     class="border-1 p-4 rounded-md "
     on:focus={onFloating}
     on:focusout={onStopFloating}
+    on:change={onAutofill}
   />
 </div>
 
