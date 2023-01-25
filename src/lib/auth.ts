@@ -1,6 +1,6 @@
 import { derived, type Readable } from "svelte/store";
 import { app } from "./app";
-import type { Auth, UserCredential } from "firebase/auth";
+import type { Auth } from "firebase/auth";
 import type { FirebaseApp } from "firebase/app";
 
 // load the firebase auth client as a store and provide an API to access its methods
@@ -27,7 +27,7 @@ const createAuth = () => {
   async function signIn(email: string, password: string) {
     const { signInWithEmailAndPassword } = await import("firebase/auth");
     const cred = await signInWithEmailAndPassword(auth, email, password);
-    return cred
+    return cred;
   }
 
   async function signOut() {
@@ -35,7 +35,6 @@ const createAuth = () => {
     await signOut(auth);
   }
 
-  
   return {
     subscribe,
     signIn,
