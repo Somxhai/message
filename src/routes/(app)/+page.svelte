@@ -4,7 +4,6 @@
   import { questions } from "$lib/constant/questions";
   import { session } from "$lib/session";
   import PrimaryButton from "$lib/ui/button/PrimaryButton.svelte";
-  import { user } from "$lib/users";
 </script>
 
 <section class="font-kanit pb-12">
