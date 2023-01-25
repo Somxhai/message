@@ -17,6 +17,7 @@ This website allows my friends to read their message that I want to tell them be
 - [Firebase-admin](https://www.npmjs.com/package/firebase-admin)
 - [Svelte-loading-spinners](https://www.npmjs.com/package/svelte-loading-spinners)
 - [Graphql-request](https://www.npmjs.com/package/graphql-request)
+- [Hygraph (CMS)](https://hygraph.com/)
 ## Screenshots
 
 ![homepage](https://user-images.githubusercontent.com/92055529/214660890-497c55e6-eb8e-435f-a529-d51c45196b79.png)
