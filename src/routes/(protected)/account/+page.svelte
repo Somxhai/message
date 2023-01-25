@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
   import { getUserData, updateData } from "$lib/api/firestore";
   import { auth } from "$lib/auth";
@@ -9,11 +10,6 @@
   import { Circle } from "svelte-loading-spinners";
   let isAllowCheckbox: HTMLInputElement;
   let name: string;
-
-  // check if user is not authen
-  if (!$session.user || !$user) {
-    goto('/login')
-  }
 
   if ($session.user) {
     name = capitalize(getNameFromEmail($session.user.email));
