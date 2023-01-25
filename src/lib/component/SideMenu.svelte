@@ -56,9 +56,7 @@
           href={$session.user ? "/message/" + $session.user?.uid : "/login"}
           class="hover:bg-slate-100 p-2 px-4 "
           text="ของตัวเอง"
-        />
-      {:else}
-      
+        />      
       {/if}
     </div>
     <div class="border-b-2 py-4">
