@@ -7,7 +7,7 @@
   import { goto } from "$app/navigation";
   import { browser } from "$app/environment";
 
-  if (browser && ($user === null && $session.user === null)) {
+  if (browser && ($user === undefined || $session.user === undefined)) {
     goto("/login");
   }
 </script>
