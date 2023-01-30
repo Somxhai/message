@@ -3,6 +3,8 @@
   import Navbar from "$lib/component/Navbar.svelte";
   import { session } from "$lib/session";
   import { Circle } from "svelte-loading-spinners";
+  import type { LayoutData } from "./$types";
+  export let data: LayoutData;
 </script>
 
 <svelte:head>
@@ -15,7 +17,7 @@
   </div>
 {:else}
   <Navbar />
-  <main >
+  <main>
     <div class="my-8">
       <slot />
     </div>
@@ -26,7 +28,7 @@
   :global(input) {
     outline-color: rgb(29 78 216);
   }
-  
+
   :global(html) {
     scroll-behavior: smooth;
   }
