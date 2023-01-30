@@ -1,22 +1,18 @@
 <script lang="ts">
   import "../../app.css";
   import Navbar from "$lib/component/Navbar.svelte";
-  import { session } from "$lib/session";
   import { Circle } from "svelte-loading-spinners";
-  import { user } from "$lib/users";
-  import { goto } from "$app/navigation";
-  import { browser } from "$app/environment";
+  import type { LayoutData } from "./$types";
 
-  if (browser && ($user === undefined || $session.user === undefined)) {
-    goto("/login");
-  }
+  export let data: LayoutData;
+  
 </script>
 
 <svelte:head>
   <title>Message</title>
 </svelte:head>
 
-{#if $session.user === undefined}
+{#if data.user === undefined}
   <div class="center-screen">
     <Circle color="#252525" />
   </div>
