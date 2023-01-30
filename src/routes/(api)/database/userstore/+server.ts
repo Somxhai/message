@@ -1,6 +1,7 @@
 import { firestore } from "firebase-admin";
 
 import { type RequestHandler, json } from "@sveltejs/kit";
+import type { FireStoreData } from "$lib/types";
 
 const db = firestore();
 export const PATCH: RequestHandler = async ({ request }) => {
@@ -16,9 +17,24 @@ export const PATCH: RequestHandler = async ({ request }) => {
 // get user data from firestore by uid
 export const POST: RequestHandler = async ({ request }) => {
   const { uid } = await request.json();
-  
+
   const result = await db.doc("users/" + uid).get();
-  const data = result.data();
+  const data = result.data() as FireStoreData;
 
   return json(data);
+};
+
+export const GET: RequestHandler = async () => {
+  const collection = await db.collection("users").get();
+  const collections = [];
+  for (const val of collection.docs) {
+    const uid: string = val.id;
+    const userdata = val.data() as FireStoreData;
+    const content = {
+      uid,
+      userdata,
+    };
+    collections.push(content);
+  }
+  return json(collections);
 };

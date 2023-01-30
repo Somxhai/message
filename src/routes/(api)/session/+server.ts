@@ -15,11 +15,17 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
   const sessionCookie = await auth.createSessionCookie(token, {
     expiresIn: WEEK_IN_MILLISECONDS,
   });
-  const options = { maxAge: WEEK_IN_SECONDS, httpOnly: true, secure: !dev };
+  const options = { maxAge: WEEK_IN_SECONDS, httpOnly: true, secure: !dev};
   cookies.set("session", sessionCookie, options);
 
   return json(getSession(user));
 };
+
+export const GET: RequestHandler = ({cookies}) => {
+  
+  return json({cookie: cookies.get('session')});
+}
+
 
 // DELETE clears the session cookie
 export const DELETE: RequestHandler = async ({ cookies }) => {
