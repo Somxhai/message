@@ -50,7 +50,7 @@
         class="hover:bg-slate-100 p-2 px-4 "
         text="ทั้งหมด"
       />
-      {#if !$session.isAdmin}
+      {#if !$session.user?.isAdmin}
         <AnchorWithArrow
           on:click={onClose}
           href={$session.user ? "/message/" + $session.user?.uid : "/login"}
@@ -78,7 +78,7 @@
     <div class="border-b-2 py-4">
       <a
         on:click={onClose}
-        href={!!$session.user ? "/account" : "/login"}
+        href={$session.user ? "/account" : "/login"}
         class="flex justify-between hover:bg-slate-100 px-4 py-2"
       >
         <span class="text-sm font-medium text-gray-500 hover:text-black "
@@ -87,11 +87,11 @@
         <ArrowLongRight class="w-4 h-4" />
       </a>
     </div>
-    {#if $session.isAdmin}
+    {#if $session.user?.isAdmin}
     <div class="border-b-2 py-4">
       <a
         on:click={onClose}
-        href={!!$session.user ? "/admin" : "/login"}
+        href={$session.user ? "/admin" : "/login"}
         class="flex justify-between hover:bg-slate-100 px-4 py-2"
       >
         <span class="text-sm font-medium text-gray-500 hover:text-black "
