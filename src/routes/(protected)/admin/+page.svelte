@@ -4,7 +4,6 @@
   import { getStats } from "$lib/utils/statistics";
   import type { PageData } from "./$types";
   import notfound from "$lib/assets/notfound.jpg";
-  import { page } from "$app/stores";
   import { getNameFromEmail, getUserByUid } from "$lib/utils/getUserInfo";
   import { capitalize } from "$lib/utils/string";
   export let data: PageData;
