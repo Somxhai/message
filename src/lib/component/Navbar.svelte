@@ -1,6 +1,5 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { getUserData } from "$lib/api/firestore";
   import { session } from "$lib/session";
   import MenuButton from "$lib/ui/button/MenuButton.svelte";
   import OutlinedButton from "$lib/ui/button/OutlinedButton.svelte";
@@ -8,8 +7,9 @@
   import HamburgerIcon from "$lib/ui/icons/HamburgerIcon.svelte";
   import Title from "$lib/ui/Title.svelte";
   import { user } from "$lib/users";
-  import { capitalize, getNameFromEmail } from "$lib/utils/getUserInfo";
+  import { getNameFromEmail } from "$lib/utils/getUserInfo";
   import { scrollToComponent } from "$lib/utils/scrollTo";
+  import { capitalize } from "$lib/utils/string";
   import SideMenu from "./SideMenu.svelte";
 
   let onOpen: VoidFunction;
@@ -31,16 +31,15 @@
     <section
       class="font-kanit text-sm font-light space-x-2 md:space-x-8 ml-2 md:ml-8 hidden md:flex md:items-center"
     >
-    
       <a href="/message" class="hover:text-zinc-500">ทั้งหมด</a>
-      {#if $session.isAdmin}
-      <a href="/admin">ไปหน้าแอดมิน</a>
+      {#if $session.user?.isAdmin}
+        <a href="/admin">ไปหน้าแอดมิน</a>
       {:else}
-      <a
-        href={$user ? "/message/" + $user.uid : "/login"}
-        class="hover:text-zinc-500">ถึงตัวเอง</a
-      >
-    {/if}
+        <a
+          href={$user ? "/message/" + $user.uid : "/login"}
+          class="hover:text-zinc-500">ถึงตัวเอง</a
+        >
+      {/if}
       <a
         href="/#questions"
         on:click={() => {
