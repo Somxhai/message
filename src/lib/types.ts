@@ -3,8 +3,9 @@ export interface Session {
     name: string;
     email: string;
     uid: string;
+    isAdmin?: boolean
   } | null;
-  isAdmin?: boolean
+  
 }
 
 export interface Questions {
@@ -20,6 +21,8 @@ export type ContentType = {
     };
   };
 };
+
+export type Stats = "isAllow" | "isRead" | "message";
 
 export type FireStoreData = {
   message: string;
