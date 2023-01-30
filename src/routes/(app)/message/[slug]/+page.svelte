@@ -16,7 +16,7 @@
   let error: string;
   export let data: PageData;
   // is not allow to view their content and check if uid is match the current page
-
+  $: messageLenght = data.userstore.message.length;
   onMount(async () => {
     if (!data.userstore.isAllow && $session.user?.uid !== data.uid) {
       goto("/");
@@ -30,10 +30,17 @@
   });
   let textarea: HTMLTextAreaElement;
 
+  const onTypingMessage:svelte.JSX.EventHandler<Event, HTMLTextAreaElement> = () => {
+    const message = textarea.value
+    
+    messageLenght = message.length;
+
+  };
+
   const onSendMessage = async () => {
     if (textarea.value) {
       await updateData(data.uid, {
-        message: textarea.value,
+        message: textarea.value
       });
       error = "";
       return true;
@@ -95,6 +102,10 @@
     >
       <h1 class="text-center text-lg my-4">อยากบอกหยังบ่</h1>
       <textarea
+      on:input={onTypingMessage}
+      on:keydown={onTypingMessage}
+      on:change={onTypingMessage}
+      maxlength="255"
         class="resize-none focus:border-blue-600 hover:border-blue-300 border-2 rounded-md p-2"
         name="message"
         cols="30"
@@ -103,6 +114,7 @@
         bind:this={textarea}
         value={userdata.message}
       />
+      <p class="text-right text-gray-400 text-xs">{messageLenght}/255</p>
       {#if error}
         <p class="text-center text-red-500">{error}</p>
       {/if}
