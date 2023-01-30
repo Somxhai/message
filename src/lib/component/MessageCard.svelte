@@ -2,11 +2,8 @@
   import { getContentById } from "$lib/api/content";
   import Property from "./Property.svelte";
 
-  import {
-    capitalize,
-    getNameFromEmail,
-    getUserByUid,
-  } from "$lib/utils/getUserInfo";
+  import { getNameFromEmail, getUserByUid } from "$lib/utils/getUserInfo";
+  import { capitalize } from "$lib/utils/string";
 
   export let uid: string;
 </script>
