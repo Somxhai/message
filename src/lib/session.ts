@@ -49,7 +49,10 @@ async function syncSession() {
         if (user) {
           const userdata = await getUserData(user.uid);
           internal.update((val) => {
-            val.isAdmin = userdata.isAdmin;
+            if (val.user) {
+              val.user.isAdmin = userdata.isAdmin;
+            }
+  
             return val;
           });
         }
