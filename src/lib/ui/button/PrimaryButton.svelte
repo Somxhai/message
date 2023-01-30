@@ -15,13 +15,12 @@
 <button
   {type}
   on:click={handleClick}
-  class={`rounded-md text-white font-kanit text-sm bg-blue-600 hover:brightness-125 ${className}`}
+  class={`rounded-md text-white font-kanit text-sm bg-blue-600 hover:brightness-125 w-fit ${className}`}
 >
   {#if loading}
-  <div class="mx-auto w-fit">
-     <Circle size="1.25" unit="rem" color="white" />
-  </div>
-   
+    <div class="mx-auto w-fit">
+      <Circle size="1.25" unit="rem" color="white" />
+    </div>
   {:else}
     <slot />
   {/if}
