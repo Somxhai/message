@@ -1,6 +1,6 @@
 import type { ContentType } from "$lib/types";
 import { error } from "@sveltejs/kit";
-import request, { gql } from "graphql-request";
+import { request, gql } from "graphql-request";
 
 export const getContentById = async (contentId: string) => {
   const url = import.meta.env.VITE_CONTENT_URL;
