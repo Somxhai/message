@@ -1,25 +1,20 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { getUserData, updateData } from "$lib/api/firestore";
+  import { updateData } from "$lib/api/firestore";
   import { auth } from "$lib/auth";
-  import { session } from "$lib/session";
   import PrimaryButton from "$lib/ui/button/PrimaryButton.svelte";
-  import { user } from "$lib/users";
   import { getNameFromEmail } from "$lib/utils/getUserInfo";
   import { capitalize } from "$lib/utils/string";
-  import { Circle } from "svelte-loading-spinners";
   const layoutData = $page.data;
   let isAllowCheckbox: HTMLInputElement;
   let name: string;
   import { page } from "$app/stores";
-  import { redirect } from "@sveltejs/kit";
+  import { session } from "$lib/session";
 
-  if (layoutData.user?.email) {
-    name = capitalize(getNameFromEmail(layoutData.user.email || ""));
-  }
+  name = capitalize(getNameFromEmail($session.user?.email || ""));
 </script>
 
-{#if layoutData.user && layoutData.userStore}
+{#if $session.user && layoutData.user && layoutData.userStore}
   <div class="font-kanit md:w-2/3 mx-auto">
     <h1 class="text-center text-2xl md:text-3xl">
       สวัสดี <span class="text-blue-600 underline font-medium">{name}</span>
