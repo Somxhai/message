@@ -3,8 +3,6 @@
   import Navbar from "$lib/component/Navbar.svelte";
   import { session } from "$lib/session";
   import { Circle } from "svelte-loading-spinners";
-  import type { LayoutData } from "./$types";
-  export let data: LayoutData;
 </script>
 
 <svelte:head>

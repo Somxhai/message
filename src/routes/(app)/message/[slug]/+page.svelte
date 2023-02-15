@@ -30,17 +30,19 @@
   });
   let textarea: HTMLTextAreaElement;
 
-  const onTypingMessage:svelte.JSX.EventHandler<Event, HTMLTextAreaElement> = () => {
-    const message = textarea.value
-    
-    messageLenght = message.length;
+  const onTypingMessage: svelte.JSX.EventHandler<
+    Event,
+    HTMLTextAreaElement
+  > = () => {
+    const message = textarea.value;
 
+    messageLenght = message.length;
   };
 
   const onSendMessage = async () => {
     if (textarea.value) {
       await updateData(data.uid, {
-        message: textarea.value
+        message: textarea.value,
       });
       error = "";
       return true;
@@ -88,7 +90,7 @@
     สวัสดี <span class="text-blue-600">{name}</span>
   </blockquote>
 
-  <section class="md:w-8/12 mx-auto px-4 md:p-4 text-sm md:text-base">
+  <section class="md:w-8/12 mx-auto px-4 md:p-4 text-sm md:text-base space-y-8">
     {@html html}
   </section>
 
@@ -102,10 +104,10 @@
     >
       <h1 class="text-center text-lg my-4">อยากบอกหยังบ่</h1>
       <textarea
-      on:input={onTypingMessage}
-      on:keydown={onTypingMessage}
-      on:change={onTypingMessage}
-      maxlength="255"
+        on:input={onTypingMessage}
+        on:keydown={onTypingMessage}
+        on:change={onTypingMessage}
+        maxlength="255"
         class="resize-none focus:border-blue-600 hover:border-blue-300 border-2 rounded-md p-2"
         name="message"
         cols="30"

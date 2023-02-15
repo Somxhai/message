@@ -9,7 +9,7 @@
   let toggle = false;
   export const onToggle = () => {
     toggle = true;
-    setTimeout(() => toggle = false, second * 1000);
+    setTimeout(() => (toggle = false), second * 1000);
   };
 </script>
 

@@ -35,7 +35,9 @@
     {#each data.userstores as store}
       {#if store.userdata.message}
         {#await getUserByUid(store.uid)}
-          <div class="min-h-[6.25rem] bg-gray-200 my-4 animate-skeleton px-2 py-4" />
+          <div
+            class="min-h-[6.25rem] bg-gray-200 my-4 animate-skeleton px-2 py-4"
+          />
         {:then user}
           <AdminMessage
             class="min-h-[6.25rem] my-4 border-1 border-gray-100 px-2 py-4 bg-blue-50"

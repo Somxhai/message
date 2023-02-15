@@ -1,10 +1,7 @@
-
 // get user info by cookie
 
-import { auth } from "$lib/admin.server"
+import { auth } from "$lib/admin.server";
 
-export const getUserUidByCookie= async (cookie:string) => {
-    
-    return (await auth.verifySessionCookie(cookie)).uid
-}
-
+export const getUserUidByCookie = async (cookie: string) => {
+  return (await auth.verifySessionCookie(cookie)).uid;
+};

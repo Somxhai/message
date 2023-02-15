@@ -1,4 +1,5 @@
-import { firestore } from "firebase-admin";
+import pkg from "firebase-admin";
+const { firestore } = pkg;
 
 import { type RequestHandler, json } from "@sveltejs/kit";
 import type { FireStoreData } from "$lib/types";

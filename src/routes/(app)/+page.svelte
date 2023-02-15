@@ -7,7 +7,6 @@
 </script>
 
 <section class="font-kanit pb-12">
-  
   <h1 class="text-center text-2xl text-blue-600 font-semibold">Message</h1>
   <p class="text-left mx-auto w-fit font-kanit py-4">
     เป็นเว็บไซต์ที่ทำขึ้นมาเพื่อบอกเรื่องที่อยากจะบอก ผ่านทางเว็บไซต์ตัวนี้

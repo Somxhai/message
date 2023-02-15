@@ -3,9 +3,8 @@ export interface Session {
     name: string;
     email: string;
     uid: string;
-    isAdmin?: boolean
+    isAdmin?: boolean;
   } | null;
-  
 }
 
 export interface Questions {

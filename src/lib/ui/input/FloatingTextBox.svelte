@@ -43,7 +43,9 @@
     bind:this={ref}
     {type}
     {name}
-    class="border-1 p-4 rounded-md {className} {error ? "border-red-600 hover:border-red-600" : ""}"
+    class="border-1 p-4 rounded-md {className} {error
+      ? 'border-red-600 hover:border-red-600'
+      : ''}"
     on:focus={onFloating}
     on:focusout={onStopFloating}
     on:change={onAutofill}

@@ -12,6 +12,9 @@
   export { className as class };
 </script>
 
-<button class="rounded-3xl hover:bg-gray-100 p-2 pointer {className}" on:click={handleClick}>
-  <slot/>
+<button
+  class="rounded-3xl hover:bg-gray-100 p-2 pointer {className}"
+  on:click={handleClick}
+>
+  <slot />
 </button>

@@ -9,6 +9,8 @@ declare global {
     }
     interface PageData {
       session: import("$lib/types").Session;
+      userStore?: import('$lib/types').FireStoreData;
+      user?: import("firebase-admin/auth").UserRecord;
     }
     // interface Platform {}
   }

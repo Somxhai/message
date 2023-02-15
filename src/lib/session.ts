@@ -39,7 +39,6 @@ async function syncSession() {
           : fetch("/session", {
               method: "DELETE",
             });
-        
 
         // TODO: handle s if session can't be set on server ...
 
@@ -52,7 +51,7 @@ async function syncSession() {
             if (val.user) {
               val.user.isAdmin = userdata.isAdmin;
             }
-  
+
             return val;
           });
         }

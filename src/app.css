@@ -11,3 +11,9 @@
     transform: translate(-50%, -50%);
   }
 }
+
+@layer base {
+  ul, ol {
+    list-style:disc;
+  }
+}

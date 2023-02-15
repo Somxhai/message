@@ -6,7 +6,6 @@ export const load: PageLoad = async ({ fetch }) => {
   const result = await fetch("/content", {
     method: "POST",
     body: JSON.stringify({
-      
       all: true,
     }),
   }).catch(() => {

@@ -20,19 +20,18 @@ export const load: LayoutServerLoad = async ({ fetch, url }) => {
       uid,
     }),
   });
-  const userRequest = await fetch('/database/user', {
+  const userRequest = await fetch("/database/user", {
     method: "POST",
     body: JSON.stringify({
       uid,
     }),
-  })
+  });
 
   const userStore = JSON.parse(await userStoreRequest.text()) as FireStoreData;
-  
 
   if (!userStore.isAdmin && url.pathname.includes("admin")) {
     throw redirect(301, "/account");
   }
-  const user = JSON.parse(await userRequest.text()) as UserRecord
-  return  {userStore, user}
+  const user = JSON.parse(await userRequest.text()) as UserRecord;
+  return { userStore, user };
 };

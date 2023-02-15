@@ -1,6 +1,6 @@
 import type { UserRecord } from "firebase-admin/auth";
 
-export const getNameFromEmail = (email: string | null):string => {
+export const getNameFromEmail = (email: string | null): string => {
   if (email) {
     const regex = /@confession.peak/;
     return email.replace(regex, "");
@@ -8,15 +8,12 @@ export const getNameFromEmail = (email: string | null):string => {
   return "";
 };
 
-
-
-
-export const getUserByUid = async (uid:string) => {
-  const result = await fetch('/database/user', {
+export const getUserByUid = async (uid: string) => {
+  const result = await fetch("/database/user", {
     method: "POST",
     body: JSON.stringify({
-      uid
-    })
-  })
-  return JSON.parse(await result.text()) as UserRecord
-}
+      uid,
+    }),
+  });
+  return JSON.parse(await result.text()) as UserRecord;
+};

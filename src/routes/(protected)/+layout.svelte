@@ -2,17 +2,14 @@
   import "../../app.css";
   import Navbar from "$lib/component/Navbar.svelte";
   import { Circle } from "svelte-loading-spinners";
-  import type { LayoutData } from "./$types";
-
-  export let data: LayoutData;
-  
+  import { session } from "$lib/session";
 </script>
 
 <svelte:head>
   <title>Message</title>
 </svelte:head>
 
-{#if data.user === undefined}
+{#if $session.user == undefined}
   <div class="center-screen">
     <Circle color="#252525" />
   </div>

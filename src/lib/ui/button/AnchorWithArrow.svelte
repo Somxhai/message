@@ -1,12 +1,12 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import ArrowLongRight from "../icons/ArrowLongRight.svelte";
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher();
   const handleClick = () => {
     dispatch("click");
   };
   export let href: string;
-  export let text:string
+  export let text: string;
   export let className: string;
   export { className as class };
 </script>
