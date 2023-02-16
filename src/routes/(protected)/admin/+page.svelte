@@ -29,8 +29,21 @@
 </div>
 
 <div class="my-4 border-1 border-gray-100 py-4 px-2">
+  <h1 class="text-2xl text-center">อ่านแล้ว</h1>
+  {#each data.userstores as store}
+    {#if store.userdata.isRead}
+      {#await getUserByUid(store.uid)}
+        <div
+          class="min-h-[6.25rem] bg-gray-200 my-4 animate-skeleton px-2 py-4"
+        />
+        {:then user}
+        <div class="ring-2 ring-slate-200 p-4 rounded-md my-4">
+          {capitalize(getNameFromEmail(user.email ?? ""))}
+        </div>
+      {/await}
+    {/if}
+  {/each}
   <h1 class="text-2xl text-center">ข้อความ</h1>
-
   {#if hasMessage}
     {#each data.userstores as store}
       {#if store.userdata.message}
