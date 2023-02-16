@@ -10,6 +10,7 @@
   let name: string;
   import { page } from "$app/stores";
   import { session } from "$lib/session";
+  import { browser } from "$app/environment";
 
   name = capitalize(getNameFromEmail($session.user?.email || ""));
 </script>
@@ -82,10 +83,9 @@
     <div class="py-8">
       <PrimaryButton
         class="bg-red-600 py-4 px-6 mx-auto block w-fit"
-        on:click={() => {
-          auth.signOut().then(() => {
-            goto("/login");
-          });
+        on:click={async () => {
+          await auth.signOut();
+          await goto("/");
         }}>ออกจากระบบ</PrimaryButton
       >
     </div>
