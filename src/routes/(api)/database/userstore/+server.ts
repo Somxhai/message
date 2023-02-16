@@ -1,10 +1,9 @@
-import pkg from "firebase-admin";
-const { firestore } = pkg;
+import firestore from "firebase-admin";
 
 import { type RequestHandler, json } from "@sveltejs/kit";
 import type { FireStoreData } from "$lib/types";
 
-const db = firestore();
+const db = firestore.firestore();
 export const PATCH: RequestHandler = async ({ request }) => {
   const { uid, data } = await request.json();
 
