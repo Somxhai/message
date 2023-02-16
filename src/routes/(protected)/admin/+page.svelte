@@ -36,7 +36,7 @@
         <div
           class="min-h-[6.25rem] bg-gray-200 my-4 animate-skeleton px-2 py-4"
         />
-        {:then user}
+      {:then user}
         <div class="ring-2 ring-slate-200 p-4 rounded-md my-4">
           {capitalize(getNameFromEmail(user.email ?? ""))}
         </div>

@@ -10,6 +10,7 @@ export const load: LayoutServerLoad = async ({ fetch, url }) => {
   });
 
   const cookie = JSON.parse(await req.text());
+
   if (!cookie.cookie) {
     throw redirect(301, "/login");
   }
@@ -28,7 +29,7 @@ export const load: LayoutServerLoad = async ({ fetch, url }) => {
   });
 
   const userStore = JSON.parse(await userStoreRequest.text()) as FireStoreData;
-
+  
   if (!userStore.isAdmin && url.pathname.includes("admin")) {
     throw redirect(301, "/account");
   }

@@ -3,6 +3,10 @@
   import Navbar from "$lib/component/Navbar.svelte";
   import { Circle } from "svelte-loading-spinners";
   import { session } from "$lib/session";
+  import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
+  import { browser } from "$app/environment";
+  
 </script>
 
 <svelte:head>
